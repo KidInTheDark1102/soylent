@@ -9,10 +9,36 @@
     <script src="public/js/app.js"></script>
     <script src="public/js/app.controller.js"></script>
 
+    <style>
+        body {
+            font-size: 1.8rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        .jumbo-tron {
+            display: flex;
+            flex: 1;
+            justify-content: 'center';
+            align-items: 'center';
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1> Home Page </h1>
+    <div class="container">
+        <div class="jumbo-tron">
+            <h1> A dope marketing site </h1>
+            <p><strong> Subscribe to our mailing list! </strong></p>
+            
+            <form method="POST" action="/subscribe">
+                <input type="text" placeholder="Email Address" />
+            </form>
+        </div>
     </div>
 </body>
 </html>
