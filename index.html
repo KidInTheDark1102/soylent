@@ -37,10 +37,45 @@
             <p><strong> Subscribe to our mailing list! </strong></p>
             
             <form id="subsciption-form" method="POST" action="/subscribe">
-                <input type="text" placeholder="Email Address" />
+                <input id="email-input" type="text" placeholder="Email Address" />
                 <input type="submit">
             </form>
         </div>
     </div>
+    
+<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+<script>
+    function saveToFirebase(email, firebase) {
+        firebase.database().ref('subscription-entries').push().set({email: email})
+            .then(function(snapshot){
+            console.log(snapshot);
+            alert("Success");
+        }).catch(function(err){
+            alert("Error");
+            console.log(err);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function(event) {
+    // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDpPBmLbfGq7Ux-_DYjmi4lIrC3roX7XPo",
+        authDomain: "soylent-5b8cd.firebaseapp.com",
+        databaseURL: "https://soylent-5b8cd.firebaseio.com",
+        projectId: "soylent-5b8cd",
+        storageBucket: "soylent-5b8cd.appspot.com",
+        messagingSenderId: "1025108534951"
+      };
+      firebase.initializeApp(config);
+      
+        const form = document.querySelector('#subsciption-form');
+        const input = document.querySelector('#email-input');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveToFirebase(input.value, firebase);
+        })
+     
+  })
+</script>
 </body>
 </html>
