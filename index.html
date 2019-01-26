@@ -24,8 +24,9 @@
         .jumbo-tron {
             display: flex;
             flex: 1;
-            justify-content: 'center';
-            align-items: 'center';
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
     </style>
 </head>
@@ -35,8 +36,9 @@
             <h1> A dope marketing site </h1>
             <p><strong> Subscribe to our mailing list! </strong></p>
             
-            <form method="POST" action="/subscribe">
+            <form id="subsciption-form" method="POST" action="/subscribe">
                 <input type="text" placeholder="Email Address" />
+                <input type="submit">
             </form>
         </div>
     </div>
