@@ -45,8 +45,8 @@
     
 <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
 <script>
-    function saveToFirebase(email, firebase) {
-        firebase.database().ref('subscription-entries').push().set({email: email})
+    function saveToFirebase(email, db) {
+        db.ref('subscription-entries').push().set({email: email})
             .then(function(snapshot){
             console.log(snapshot);
             alert("Success");
@@ -54,6 +54,10 @@
             alert("Error");
             console.log(err);
         });
+    }
+    
+    function fetchSubscriptionEntries(db){
+        
     }
     document.addEventListener('DOMContentLoaded', function(event) {
     // Initialize Firebase
@@ -66,13 +70,15 @@
         messagingSenderId: "1025108534951"
       };
       firebase.initializeApp(config);
+        
+        const db = firebase.database();
       
         const form = document.querySelector('#subsciption-form');
         const input = document.querySelector('#email-input');
         
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            saveToFirebase(input.value, firebase);
+            saveToFirebase(input.value, db);
         })
      
   })
